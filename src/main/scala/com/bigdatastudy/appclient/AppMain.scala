@@ -1,3 +1,4 @@
+import com.alibaba.fastjson.{JSON, JSONArray, JSONObject}
 import com.bigdatastudy.bean.AppStart
 import org.slf4j.{Logger, LoggerFactory}
 
@@ -28,7 +29,59 @@ object AppMain{
       flag match {
         case 0 =>
           //应用启动
-          val appStart = AppStart()
+          val appStart: AppStart = generateStart()
+          val jsonString = JSON.toJSONString(appStart)
+          //控制台打印
+          logger.info(jsonString)
+
+        case 1 =>
+          val json: JSONObject = new JSONObject()
+          json.fluentPut("ap", "app").put("cm", generateComFiles())
+
+          val eventsArray: JSONArray = new JSONArray()
+
+          //事件日志
+          //商品点击，展示
+          if(rand.nextBoolean()){
+            eventsArray.add(generateDisplay())
+            json.put("et", eventsArray)
+          }
+
+          //商品详情页
+          if(rand.nextBoolean()){
+            eventsArray.add(generateNewsDetail())
+            json.put("et", eventsArray)
+          }
+
+          //商品列表页
+          if(rand.nextBoolean()){
+            eventsArray.add(generateNewsList())
+            json.put("et", eventsArray)
+          }
+
+          //广告
+          if(rand.nextBoolean()){
+            eventsArray.add(generateAd())
+            json.put("et", eventsArray)
+          }
+
+          //消息通知
+          if(rand.nextBoolean()){
+            eventsArray.add(generateNotification())
+            json.put("et", eventsArray)
+          }
+
+          //用户前台活跃
+          if(rand.nextBoolean()){
+            eventsArray.add(generatebeforeground())
+            json.put("et", eventsArray)
+          }
+
+          //用户后台活跃
+          if(rand.nextBoolean()){
+            eventsArray.add(generatebeBackground())
+            json.put("et", eventsArray)
+          }
 
       }
     }
