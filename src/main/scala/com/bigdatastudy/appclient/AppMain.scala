@@ -1,3 +1,4 @@
+import com.bigdatastudy.bean.AppStart
 import org.slf4j.{Logger, LoggerFactory}
 
 import scala.util.Random
@@ -19,5 +20,17 @@ object AppMain{
 
     //参数二：循环遍历次数
     val loop_len = if(args.length > 1) args(1).toInt else 1000
+  }
+
+  def generateLog(delay: Long, loop_len: Int): Unit ={
+    for(i <- 0 until loop_len){
+      val flag = rand.nextInt(2)
+      flag match {
+        case 0 =>
+          //应用启动
+          val appStart = AppStart()
+
+      }
+    }
   }
 }
