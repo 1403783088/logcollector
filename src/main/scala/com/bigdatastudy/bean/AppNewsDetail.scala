@@ -14,7 +14,7 @@ package com.bigdatastudy.bean
  */
 case class AppNewsDetail(var entry: String,
                          var action: String,
-                         var goodsid: Int,
+                         var goodsid: String,
                          var show_style: String,
                          var news_staytime: String,
                          var loading_time: String,

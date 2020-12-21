@@ -10,7 +10,7 @@ package com.bigdatastudy.bean
  * @param category 分类ID（服务端定义的分类ID）
  */
 case class AppDisplay(var action: String,
-                      var goodsid: Int,
+                      var goodsid: String,
                       var place: String,
                       var extend1: String,
                       var category: String)
