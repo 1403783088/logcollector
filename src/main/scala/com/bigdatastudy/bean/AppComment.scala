@@ -11,7 +11,7 @@ package com.bigdatastudy.bean
  * @param praise_count 点赞数量
  * @param reply_count 回复数量
  */
-class AppComment (var comment_id: Int,
+case class AppComment (var comment_id: Int,
                   var userid: Int,
                   var p_comment_id: Int,
                   var content: String,
