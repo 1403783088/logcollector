@@ -8,30 +8,21 @@
     <artifactId>logcollector</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--版本号统一-->
     <properties>
-        <sl4j.version>1.7.20</sl4j.version>
+        <slf4j.version>1.7.20</slf4j.version>
         <logback.version>1.0.7</logback.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.json4s</groupId>
-            <artifactId>json4s-native_2.11</artifactId>
-            <version>3.2.11</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.json4s</groupId>
-            <artifactId>json4s-native_2.11</artifactId>
-            <version>3.2.11</version>
-        </dependency>
-
+        <!--阿里巴巴开源json解析框架-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.51</version>
         </dependency>
 
+        <!--日志生成框架-->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
@@ -41,22 +32,29 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>${logback.version}</version>
-
         </dependency>
-
     </dependencies>
 
+    <!--编译打包插件-->
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin </artifactId>
                 <configuration>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>flowsort.FlowSum</mainClass>
+                            <mainClass>com.atguigu.appclient.AppMain</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -70,14 +68,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>6</source>
-                    <target>6</target>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
+
 </project>
